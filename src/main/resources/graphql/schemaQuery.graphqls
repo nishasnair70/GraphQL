@@ -1,0 +1,37 @@
+
+
+ type Author {
+    id: ID!
+    firstName: String!
+    lastName: String
+    comments: [Comment]
+}
+type Article {
+    id: ID!
+    text: String!
+    title: String
+    comments: [Comment]
+}
+
+  type Comment {
+    id: ID!
+    text: String!
+   author: Author!
+   article:Article! 
+}
+
+
+
+ type Query {
+ 
+ getCommentById(id: ID!): Comment
+ findAllcomments: [Comment]!
+
+ 
+}
+ type Mutation {
+     
+     addComments(text: String!,authorId: ID!,articleId:ID!): Comment!
+     updateComments(id: ID!, text: String!,authorId: ID!,articleId:ID!): Comment
+     deleteComment(id: ID): Boolean!
+    }
